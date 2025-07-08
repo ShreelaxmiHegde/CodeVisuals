@@ -1,0 +1,12 @@
+body {
+    background-color: cornsilk;
+    height: 100%;
+    margin: 0;
+}
+
+#main {
+    /* margin: auto; */
+    width: 50%;
+    height: 30%;
+    background-color: darkkhaki;
+}

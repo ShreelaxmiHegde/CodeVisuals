@@ -1,0 +1,86 @@
+<h1>Arrays</h1>
+
+<h3>Arrays are linear data structures that store elements of the same data type in contiguous memory locations.</h3>
+
+<ul>
+    <li>All elements must be of the same data type.</li>
+    <li>Each element is accessible via its index in constant time.</li>
+    <li><code>arr[0]</code> — Accessing the element at index 0.</li>
+    <li><code>arr[0] = 30</code> — Error if the array is declared as constant or unmodifiable.</li>
+    <li><code>int arr[4];</code> — Declares an array of size 4 with uninitialized (garbage) values.</li>
+    <li><code>int arr[4] = {1, 2, 3, 4};</code> — Declares and initializes an array with 4 elements.</li>
+    <li><code>int arr[10] = {1, 2, 3, 4};</code> — Remaining elements will be initialized to 0.</li>
+    <li><code>int arr[] = {1, 2, 3, 4};</code> — Compiler infers array size from values.</li>
+    <li><strong>Note:</strong> Accessing out-of-range indices causes undefined behavior or warnings.</li>
+    <li>Arrays occupy contiguous memory blocks.</li>
+    <li>Memory is allocated statically at compile time.</li>
+    <li>Arrays are passed by reference to functions.</li>
+</ul>
+
+<h2>Arrays as Pointers in C++</h2>
+<ul>
+    <li>Array names are treated as pointers in C++.</li>
+    <li>These two function declarations are equivalent:
+        <ul>
+            <li><code>void func(int arr[])</code></li>
+            <li><code>void func(int* arr)</code></li>
+        </ul>
+    </li>
+    <li><code>cout << arr;</code> — Prints the memory address (pointer).</li>
+    <li><code>*arr</code> gives <code>arr[0]</code>, <code>*(arr + 2)</code> gives <code>arr[2]</code>, etc.</li>
+</ul>
+
+<h3>⚠️ Beware: Size Issue Inside Functions</h3>
+<p>
+    When you pass an array to a function, <code>sizeof(arr)</code> only gives the size of the pointer, not the full array, because both point to the same memory. So this won’t work:
+</p>
+
+<pre>
+void printArr(int arr[]) {
+    int n = sizeof(arr)/sizeof(int); // Won’t give actual size
+    for(int i = 0; i < n; i++) {
+        cout << arr[i];
+    }
+}
+</pre>
+
+<p>Instead, pass the array size as an argument:</p>
+
+<pre>
+void printArr(int arr[], int n) {
+    for(int i = 0; i < n; i++) {
+        cout << arr[i];
+    }
+}
+</pre>
+
+<hr>
+
+<h2>📌 Short Notes and Tricks</h2>
+
+<ul>
+    <li>
+        <strong>Get size of array (only works in the same scope):</strong><br>
+        <code>sizeof(arr) / sizeof(arr[0])</code> — Returns the number of elements.
+    </li>
+
+    <li>
+        <strong>Input into array:</strong><br>
+        Use a loop:<br>
+        <pre>
+for(int i = 0; i < n; i++) {
+    cin >> arr[i];
+}
+        </pre>
+    </li>
+
+    <li>
+        <strong>Output from array:</strong><br>
+        Use a loop:<br>
+        <pre>
+for(int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+}
+        </pre>
+    </li>
+</ul>
