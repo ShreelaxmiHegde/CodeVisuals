@@ -35,38 +35,39 @@ Organized for scalability and clarity. Each topic is self-contained and easy to 
 ```
 CodeVisuals/
 │
-├── index.html # Home page of the visualizer
-├── style.css # CSS for the home page
-├── script.js # JS for home page interactivity
+├── home-page/              # Home page files organized in a single folder
+│   ├── index.html          # Home page of the visualizer
+│   ├── style.css           # CSS for the home page
+│   └── script.js           # JS for home page interactivity
 │
 ├── styles/
-│ └── doc-style.css # Shared stylesheet for all documentation pages
+│   └── doc-style.css       # Shared stylesheet for all documentation pages
 │
-├── topics/ # All DSA topics are organized here
-│ ├── arrays/
-│ │ ├── index.html # Array visualization interface
-│ │ ├── doc.html # Array documentation
-│ │ ├── style.css # CSS specific to array visualizer
-│ │ ├── script.js # Logic for array visualizer
-│ │
-│ ├── dynamic-arrays/
-│ │ ├── index.html
-│ │ ├── doc.html
-│ │ ├── style.css
-│ │ ├── script.js
-│ │
-│ ├── char-arrays/
-│ │ ├── index.html
-│ │ ├── doc.html
-│ │ ├── style.css
-│ │ ├── script.js
-│ │
-│ └── ...more topics to come
+├── topics/                 # All DSA topics are organized here
+│   ├── arrays/
+│   │   ├── index.html      # Array visualization interface
+│   │   ├── doc.html        # Array documentation
+│   │   ├── style.css       # CSS specific to array visualizer
+│   │   └── script.js       # Logic for array visualizer
+│   │
+│   ├── dynamic-arrays/
+│   │   ├── index.html
+│   │   ├── doc.html
+│   │   ├── style.css
+│   │   └── script.js
+│   │
+│   ├── char-arrays/
+│   │   ├── index.html
+│   │   ├── doc.html
+│   │   ├── style.css
+│   │   └── script.js
+│   │
+│   └── ...more topics to come
 │
-├── assets/ # Images, logos, icons, etc.
+├── assets/                 # Images, logos, icons, etc.
 │
-├── LICENSE # Project license (MIT)
-└── README.md # You’re reading it!  
+├── LICENSE                 # Project license (MIT)
+└── README.md               # You’re reading it!
 ```
 ---
 
