@@ -28,7 +28,11 @@ Comming soon........
 
 ---
 
-## 📁 Project Structure
+## 📁 Folder Structure
+
+Organized for scalability and clarity. Each topic is self-contained and easy to extend.
+
+```
 CodeVisuals/
 │
 ├── index.html # Home page of the visualizer
@@ -62,8 +66,8 @@ CodeVisuals/
 ├── assets/ # Images, logos, icons, etc.
 │
 ├── LICENSE # Project license (MIT)
-└── README.md # You’re reading it!
-
+└── README.md # You’re reading it!  
+```
 ---
 
 
