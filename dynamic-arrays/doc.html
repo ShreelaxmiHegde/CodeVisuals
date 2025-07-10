@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Arrays</title>
+    <link rel="stylesheet" href="../styles/doc-style.css">
+</head>
+<body>
+    <h1>📦 Dynamic Arrays</h1>
+
+    <h2>Memory allocation using the <code>new</code> keyword</h2>
+
+    <pre>
+        int size;
+        cin >> size;                  // Take array size at runtime
+        int* arr = new int[size];     // Dynamically create an array of that size
+    </pre>
+
+    <p>
+        🧹 Since this memory is created manually, it must be <strong>freed manually</strong> too using the <code>delete</code> keyword:
+    </p>
+
+    <pre>
+        delete[] arr;   // Correct way to delete a dynamic array
+    </pre>
+
+    <p><i>*Always use <code>delete[]</code> (not just <code>delete</code>) when freeing a dynamic array.</i></p>
+</body>
+</html>

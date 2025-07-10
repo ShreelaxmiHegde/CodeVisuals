@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D-Vectors</title>
+    <link rel="stylesheet" href="../styles/doc-style.css">
+</head>
+<body>
+    <h1>2D Vectors</h1>
+
+    <h2>Concept</h2>
+    <ul>
+        <li>2D vectors are vectors of vectors — each row is a separate vector.</li>
+        <li>They offer dynamic sizing and flexibility compared to arrays.</li>
+        <li><code>vector&lt;vector&lt;int&gt;&gt; matrix;</code> — declaration of a 2D vector.</li>
+        <li><code>matrix[i][j]</code> — access a specific element.</li>
+        <li><code>matrix.size()</code> — gives the number of rows.</li>
+        <li><code>matrix[i].size()</code> — gives number of columns in the i-th row.</li>
+    </ul>
+
+    <h2>Example</h2>
+    <pre>
+        vector&lt;vector&lt;int&gt;&gt; matrix = {{1, 2, 3}, {4, 5, 6}};
+
+        for(int i = 0; i &lt; matrix.size(); i++) {
+            for(int j = 0; j &lt; matrix[j].size(); j++) {
+                cout &lt;&lt; matrix[i][j] &lt;&lt; " ";
+            }
+            cout &lt;&lt; endl;
+        }
+    </pre>
+
+    <h2>Note:</h2>
+    <ul>
+        <li>Unlike 2D arrays, each row in a 2D vector can have a different number of elements.</li>
+    </ul>
+
+    <h3>Example of irregular 2D vector:</h3>
+    <pre>
+        vector&lt;vector&lt;int&gt;&gt; matrix = {
+            {1, 2, 4, 5},
+            {6, 7},
+            {3, 8, 9}
+        };
+    </pre>
+
+</body>
+</html>

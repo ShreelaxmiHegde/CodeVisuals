@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vectors</title>
+    <link rel="stylesheet" href="../styles/doc-style.css">
+</head>
+<body>
+    <h1>Vectors</h1>
+
+    <h2>Vectors are like dynamic arrays that can resize automatically at runtime.</h2>
+
+    <ul>
+        <li>Like arrays, they store elements in contiguous memory blocks.</li>
+        <li>Header file: <code>#include &lt;vector&gt;</code></li>
+        <li><code>vector&lt;int&gt; vec;</code> — Declare an empty vector of integers</li>
+        <li><code>vector&lt;int&gt; vec = {1, 2, 3, 4};</code> — Initialization with values</li>
+        <li><code>vector&lt;int&gt; vec(5, -1);</code> — Vector of size 5, all elements initialized to -1</li>
+        <li><code>vec[0]</code> — Accessing element at index 0</li>
+        <li><code>vec.size()</code> — Get current number of elements</li>
+    </ul>
+
+    <h2>Vector Memory Implementation</h2>
+    <ul>
+        <li>Internally uses a dynamic array in the heap</li>
+        <li>When more space is needed, it doubles its capacity and copies elements to a new block</li>
+        <li>This causes occasional O(n) time when resizing, but average insertion time remains O(1)</li>
+    </ul>
+
+    <pre>
+        // Example
+        vector<int> vec;
+        vec.push_back(10); // capacity = 1
+        vec.push_back(20); // capacity doubled to 2
+        vec.push_back(30); // capacity doubled to 4
+    </pre>
+
+    <h2>Built-in Functions</h2>
+    <ul>
+        <li><code>vec.capacity()</code> — Total allocated space (may be more than size)</li>
+        <li><code>vec.size()</code> — Number of elements currently in the vector</li>
+        <li><code>vec.push_back(element)</code> — Add element at the end</li>
+        <li><code>vec.pop_back()</code> — Remove the last element</li>
+        <li><code>vec.clear()</code> — Removes all elements</li>
+    </ul>
+
+    <h2>Note:</h2>
+    <ul>
+        <li>There is no <code>push_front()</code> or <code>pop_front()</code> in <code>vector</code>. Use <code>deque</code> or <code>list</code> for those.</li>
+    </ul>
+
+
+</body>
+</html>

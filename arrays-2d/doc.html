@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D-Arrays</title>
+    <link rel="stylesheet" href="../styles/doc-style.css">
+</head>
+<body>
+    <h1>🧱 2D Arrays</h1>
+    
+    <h3>2D arrays are like arrays inside arrays — they have rows and columns.</h3>
+    
+    <h2>📌 Initialization</h2>
+    <pre>
+        int arr[2][3] = {
+            {1, 2, 3},
+            {4, 5, 6}
+        };
+    </pre>
+    
+    <ul>
+        <li>Think of it as a grid or table.</li>
+        <li><code>arr[i][j]</code> accesses a single element.</li>
+        <li>Data is stored in a linear memory block.</li>
+    </ul>
+    
+    <h2>✍️ Input & Output</h2>
+    
+    <h4>➡️ Input:</h4>
+    <pre>
+        for(int row = 0; row < rowSize; row++) {
+            for(int col = 0; col < colSize; col++) {
+                cin >> arr[row][col];
+            }
+        }
+    </pre>
+    
+    <h4>➡️ Output:</h4>
+    <pre>
+        for(int row = 0; row < rowSize; row++) {
+            for(int col = 0; col < colSize; col++) {
+                cout << arr[row][col] << " ";
+            }
+            cout << endl;
+        }
+    </pre>
+    
+    <h2>💾 Memory Allocation</h2>
+    <ul>
+        <li>2D arrays use a continuous block of memory.</li>
+        <li><strong>Row-Major Order</strong> (default in C++) — elements stored row by row.</li>
+        <li><strong>Column-Major Order</strong> — used in some other languages, stored column by column.</li>
+    </ul>
+
+    <h2>Note:</h2>
+    <ul>
+        <li><strong>In static 2D arrays</strong>, each row must have the same number of elements.</li>
+        <li><strong>This is invalid:</strong></li>
+    </ul>
+
+    <pre>
+        // ❌ Invalid — uneven row sizes in a 2D array
+        int arr[][] = {
+            {1, 2, 4, 5},
+            {6, 7},
+            {3, 8, 9}
+        };
+    </pre>
+
+    <h3>Why?</h3>
+    <ul>
+        <li>To have rows of different lengths, use <strong>2D vectors</strong> instead.</li>
+        <li>Static arrays require <strong>uniform memory blocks</strong> for all rows.</li>
+        <li>C++ needs the <strong>second dimension</strong> to be known at <strong>compile time</strong>.</li>
+        <li>To create rows with different lengths, use <strong>2D vectors</strong> or <strong>dynamic memory (pointers)</strong> instead.</li>
+    </ul>
+
+</body>
+</html>

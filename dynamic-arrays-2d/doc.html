@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Dynamic Arrays</title>
+    <link rel="stylesheet" href="../styles/doc-style.css">
+</head>
+<body>
+     <h1>2D Dynamic Arrays</h1>
+
+    <h2>Concept</h2>
+    <ul>
+        <li>2D dynamic arrays are created by combining multiple 1D dynamic arrays.</li>
+        <li>They cannot be created directly like static 2D arrays.</li>
+        <li>Each row is a pointer to a dynamically allocated 1D array.</li>
+        <li><code>int** arr = new int*[rows];</code> — creates an array of row pointers.</li>
+        <li>Each <code>arr[i]</code> points to a 1D array of columns.</li>
+        <li>Memory is allocated in the heap.</li>
+        <li>Memory is <strong>not contiguous</strong> like static 2D arrays.</li>
+    </ul>
+
+    <h2>Memory Allocation Process</h2>
+    <ul>
+        <li>Step-by-step memory creation:</li>
+    </ul>
+
+    <pre>
+        int row, col;
+        cin >> row >> col;
+
+        // Step 1: Allocate memory for row pointers
+        int** matrix = new int*[row];
+
+        // Step 2: Allocate memory for each row
+        for(int i = 0; i < row; i++) {
+            matrix[i] = new int[col];
+        }
+
+        // Step 3: Storing values
+        int x = 1;
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                matrix[i][j] = x++;
+            }
+        }
+    </pre>
+
+    <h2>Key Points</h2>
+    <ul>
+        <li>You can access elements like <code>matrix[i][j]</code>.</li>
+        <li>Always free the memory after use to avoid memory leaks.</li>
+    </ul>
+
+    <pre>
+        // Freeing memory
+        for(int i = 0; i < row; i++) {
+            delete[] matrix[i]; // Delete each row
+        }
+        delete[] matrix; // Delete the row pointers
+    </pre>
+
+</body>
+</html>

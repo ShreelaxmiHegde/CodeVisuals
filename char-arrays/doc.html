@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Char Arrays</title>
+    <link rel="stylesheet" href="../styles/doc-style.css">
+</head>
+<body>
+    <h1>🔡 Char Arrays</h1>
+    
+    <h3>Char arrays are sequences of characters stored in continuous memory. They end with a special character called the <code>null character</code> (<code>'\0'</code>), which marks the end of the string.</h3>
+    
+    <br>
+
+    <h2>📦 Basics & Initialization</h2>
+    <ul>
+        <li><code>char arr[] = {'a', 'b', 'c', 'd', '\0'};</code> – Manual initialization with null character at the end.</li>
+        <li>All char array rules are similar to regular arrays.</li>
+        <li><code>cout << arr</code> prints the full string, not just the address like in int arrays.</li>
+        <li><code>strlen(arr)</code> gives the number of characters before <code>'\0'</code>.</li>
+        <li><code>arr[3]</code> – Accessing a single character is the same as with int arrays.</li>
+    </ul>
+
+    <br>
+    
+    <h2>✍️ Creation & Output</h2>
+    <ul>
+        <li><code>char arr[] = "code";</code> – Automatically stores: <code>{'c', 'o', 'd', 'e', '\0'}</code></li>
+        <li><code>char arr[5] = "code";</code> – Fits perfectly including the null character.</li>
+        <li><code>char arr[50] = {'a', 'b', 'd'};</code> – Rest of the array contains garbage or empty values.</li>
+        <li><code>arr[2] = 'r';</code> – You can update characters like normal arrays.</li>
+    </ul>
+
+    <br>
+    
+    <h2>🧾 Input in Char Arrays</h2>
+    <ul>
+        <li>
+            <code>char word[20];</code>
+            <code>cin >> word;</code> – Reads a single word (stops at space or newline).
+            <br>
+        </li>
+        <li>
+            <code>cin.getline(arr, size);</code> – Reads full sentences including spaces.
+            <br>
+            Optional: <code>cin.getline(arr, size, delimiter);</code>
+        </li>
+    </ul>
+
+</body>
+</html>
