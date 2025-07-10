@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked Lists</title>
+    <link rel="stylesheet" href="../styles/doc-style.css">
+</head>
+<body>
+    <h1>Linked Lists</h1>
+
+    <h2>Linked lists are data structures where elements (nodes) are connected using pointers.</h2>
+
+    <ul>
+        <li>Each block of a linked list is called a <strong>Node</strong>.</li>
+        <li>Each node contains <code>data</code> and a pointer to the <code>next</code> node.</li>
+        <li>Memory is <strong>non-contiguous</strong>.</li>
+        <li>Can't access nodes by index directly — must traverse the list.</li>
+        <li><code>head</code> pointer points to the first node.</li>
+        <li><code>tail</code> pointer points to the last node.</li>
+        <li>The last node’s <code>next</code> points to <code>NULL</code>.</li>
+    </ul>
+
+    <h2>Implementation Approaches</h2>
+    <ol>
+        <li>Using STL</li>
+        <li>Using Classes (Custom)</li>
+    </ol>
+
+    <h3>Using STL:</h3>
+    <ul>
+        <li>Header: <code>#include &lt;list&gt;</code></li>
+        <li><code>list&lt;int&gt; ll;</code></li>
+        <li><code>ll.push_front(val)</code> — Insert at beginning</li>
+        <li><code>ll.push_back(val)</code> — Insert at end</li>
+        <li><code>ll.pop_front()</code> — Delete front node</li>
+        <li><code>ll.pop_back()</code> — Delete last node</li>
+        <li><code>ll.size()</code> — Total nodes</li>
+        <li><code>ll.front()</code> — Head value</li>
+        <li><code>ll.back()</code> — Tail value</li>
+    </ul>
+
+    <h4>Traversing using Iterators:</h4>
+    <ul>
+        <li>Header: <code>#include &lt;iterator&gt;</code></li>
+        <li><code>list&lt;int&gt;::iterator itr</code> — creation</li>
+        <li><code>ll.begin()</code> — Returns head iterator</li>
+        <li><code>ll.end()</code> — Returns tail iterator</li>
+    </ul>
+
+    <pre>
+        for(itr = ll.begin(); itr != ll.end(); itr++) {
+            cout << (*itr);
+        }
+    </pre>
+
+    <h3>Using Classes:</h3>
+    <pre>
+        class Node {
+        public:
+            int data;
+            Node* next;
+
+            Node(int val) {
+                data = val;
+                next = NULL;
+            }
+
+            ~Node() {
+                if (next != NULL) {
+                    delete next;
+                    next = NULL;
+                }
+            }
+        };
+    </pre>
+
+    <pre>
+        class List {
+        public:
+            Node* head;
+            Node* tail;
+
+            List() {
+                head = NULL;
+                tail = NULL;
+            }
+
+            ~List() {
+                if (head != NULL) {
+                    delete head;
+                    head = NULL;
+                }
+            }
+
+            void push_front(int val) {
+                Node* newNode = new Node(val);
+                if (head == NULL) {
+                    head = tail = newNode;
+                } else {
+                    newNode->next = head;
+                    head = newNode;
+                }
+            }
+
+            void push_back(int val) {
+                Node* newNode = new Node(val);
+                if (head == NULL) {
+                    head = tail = newNode;
+                } else {
+                    tail->next = newNode;
+                    tail = newNode;
+                }
+            }
+
+            void pop_front() {
+                if (head == NULL) return;
+                Node* temp = head;
+                head = head->next;
+                temp->next = NULL;
+                delete temp;
+            }
+
+            void pop_back() {
+                if (head == NULL || head->next == NULL) {
+                    delete head;
+                    head = tail = NULL;
+                    return;
+                }
+                Node* temp = head;
+                while (temp->next->next != NULL) {
+                    temp = temp->next;
+                }
+                delete tail;
+                temp->next = NULL;
+                tail = temp;
+            }
+
+            void printList() {
+                Node* temp = head;
+                while (temp != NULL) {
+                    cout << temp->data << " ";
+                    temp = temp->next;
+                }
+            }
+
+            void insert(int val, int pos) {
+                Node* newNode = new Node(val);
+                Node* temp = head;
+                for (int i = 0; i < pos - 1; i++) {
+                    if (temp == NULL) {
+                        cout << "Invalid position";
+                        return;
+                    }
+                    temp = temp->next;
+                }
+                newNode->next = temp->next;
+                temp->next = newNode;
+            }
+        };
+    </pre>
+</body>
+</html>
