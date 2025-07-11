@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubly Linked List</title>
+    <link rel="stylesheet" href="../styles/doc-style.css">
+</head>
+<body>
+    <h1>Doubly Linked List</h1>
+
+    <h2>Bidirectional Linked List</h2>
+    <ul>
+        <li>Can traverse both forward and backward.</li>
+        <li>Each node has two pointers: <code>next</code> and <code>prev</code>.</li>
+        <li>Each node stores: <code>data</code>, <code>next</code>, and <code>prev</code>.</li>
+    </ul>
+
+    <h2>Implementation</h2>
+    <pre>
+        class Node {
+        public:
+            int data;
+            Node* next;
+            Node* prev;
+
+            Node(int val) {
+                data = val;
+                next = prev = NULL;
+            }
+        };
+
+        class DoublyList {
+        public:
+            Node* head;
+            Node* tail;
+
+            DoublyList() {
+                head = tail = NULL;
+            }
+
+            // Insert at the beginning
+            void push_front(int val) {
+                Node* newNode = new Node(val);
+
+                if (head == NULL) { // Empty list
+                    head = tail = newNode;
+                } else { // Non-empty list
+                    newNode->next = head;
+                    head->prev = newNode;
+                    head = newNode;
+                }
+            }
+
+            // Remove from the beginning
+            void pop_front() {
+                if (head == NULL) return; // Empty list
+
+                Node* temp = head;
+                head = head->next;
+
+                if (head != NULL) {
+                    head->prev = NULL;
+                } else {
+                    tail = NULL; // List became empty
+                }
+
+                temp->next = NULL;
+                delete temp;
+            }
+
+            // Similarly, push_back and pop_back can be implemented
+        };
+    </pre>
+
+</body>
+</html>
