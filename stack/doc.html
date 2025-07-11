@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacks</title>
+    <link rel="stylesheet" href="../styles/doc-style.css">
+</head>
+<body>
+    <h1>Stacks</h1>
+
+    <h2>Definition</h2>
+
+    <ul>
+        <li>LIFO (Last In First Out) data structure.</li>
+        <li><code>stack&lt;int&gt; s;</code> initialization using STL.</li>
+        <li>Elements are added and removed only from the top of the stack.</li>
+        <li><code>s.push()</code> adds an element at the top.</li>
+        <li><code>s.pop()</code> removes the top element.</li>
+        <li><code>s.top()</code> returns the top element.</li>
+        <li>All operations have constant time complexity O(1).</li>
+    </ul>
+
+    <h2>Implementation</h2>
+    <h4>*A stack can be implemented using arrays, vectors, linked lists, etc.</h4>
+
+    <h3>1. Using STL</h3>
+    <pre>
+        #include &lt;stack&gt;
+
+        stack&lt;int&gt; s;
+    </pre>
+
+    <h3>2. Using Vector</h3>
+    <pre>
+        class Stack {
+        private:
+            vector&lt;int&gt; vec;
+
+        public:
+            void push(int val) {
+                vec.push_back(val);
+            }
+
+            void pop() {
+                if (isEmpty()) return;
+                vec.pop_back();
+            }
+
+            int top() {
+                if (isEmpty()) return -1;
+                return vec[vec.size() - 1];
+            }
+
+            bool isEmpty() {
+                return vec.size() == 0;
+            }
+        };
+    </pre>
+
+    <h3>3. Using Vector with <code>class template</code></h3>
+    <h4>*Works for all data types</h4>
+    <pre>
+        template&lt;class T&gt;
+        class Stack {
+        private:
+            vector&lt;T&gt; vec;
+
+        public:
+            void push(T val) {
+                vec.push_back(val);
+            }
+
+            void pop() {
+                if (isEmpty()) return;
+                vec.pop_back();
+            }
+
+            T top() {
+                if (isEmpty()) return T();
+                return vec[vec.size() - 1];
+            }
+
+            bool isEmpty() {
+                return vec.size() == 0;
+            }
+        };
+    </pre>
+
+    <h3>4. Using Linked List</h3>
+    <pre>
+        template&lt;class T&gt;
+        class Stack {
+        private:
+            List&lt;T&gt; ll;
+
+        public:
+            void push(T val) {
+                ll.push_front(val);
+            }
+
+            void pop() {
+                ll.pop_front();
+            }
+
+            T top() {
+                return ll.front();
+            }
+
+            bool isEmpty() {
+                return ll.size() == 0;
+            }
+        };
+    </pre>
+
+    <h4>Note:</h4>
+    <ul>
+        <li>To implement without STL’s <code>list</code>, the linked list class and node class must be written from scratch.</li>
+    </ul>
+
+</body>
+</html>
