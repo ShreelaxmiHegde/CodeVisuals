@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue</title>
+    <link rel="stylesheet" href="../styles/doc-style.css">
+</head>
+<body>
+    <h1>Queue</h1>
+
+    <h2>FIFO (First In First Out) Data Structure</h2>
+
+    <ul>
+        <li>Elements are inserted at the **rear (tail)** and removed from the **front (head)**.</li>
+        <li>All core operations are done in constant time: <code>O(1)</code>.</li>
+        <li><code>q.push()</code> — adds an element (enqueue)</li>
+        <li><code>q.pop()</code> — removes the front element (dequeue)</li>
+        <li><code>q.front()</code> — returns the front element without removing it</li>
+        <li><code>q.empty()</code> — checks if the queue is empty</li>
+    </ul>
+
+    <h2>Implementation</h2>
+    <h4>*Can be implemented using STL, Linked List, Arrays, or Two Stacks</h4>
+
+    ---
+
+    <h3>1. Using STL (Standard Template Library)</h3>
+
+    <pre>
+        #include &lt;queue&gt;
+        using namespace std;
+
+        queue&lt;int&gt; q;
+        q.push(10);
+        q.push(20);
+        q.front();   // 10
+        q.pop();     // removes 10
+    </pre>
+
+    <h3>2. Using Linked List</h3>
+    <pre>
+        class Node {
+        public:
+            int data;
+            Node* next;
+
+            Node(int data) {
+                this->data = data;
+                this->next = NULL;
+            }
+        };
+
+        class Queue {
+        private:
+            Node* head;
+            Node* tail;
+
+        public:
+            Queue() {
+                head = tail = NULL;
+            }
+
+            void push(int data) { // O(1)
+                Node* newNode = new Node(data);
+                if (head == NULL) {
+                    head = tail = newNode;
+                } else {
+                    tail->next = newNode;
+                    tail = newNode;
+                }
+            }
+
+            void pop() { // O(1)
+                if (head == NULL) return;
+
+                Node* temp = head;
+                head = head->next;
+                delete temp;
+
+                if (head == NULL) tail = NULL; // handle empty case
+            }
+
+            int front() {
+                if (head == NULL) return -1; // Or throw error
+                return head->data;
+            }
+
+            bool empty() {
+                return head == NULL;
+            }
+        };
+    </pre>
+
+    <h2>📌 Additional Notes</h2>
+    <ul>
+        <li>Queues are used in scheduling tasks, printers, or CPU job handling.</li>
+        <li>They are also used in **BFS (Breadth-First Search)** in graphs and trees.</li>
+        <li>To implement a **circular queue**, you can use arrays with front/rear indexes and modulus operations.</li>
+        <li>**Double-ended queues (deques)** support insertion/removal at both ends: use <code>&lt;deque&gt;</code> in C++ STL.</li>
+    </ul>
+
+</body>
+</html>
