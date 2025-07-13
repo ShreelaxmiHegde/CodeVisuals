@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Trees</title>
+    <link rel="stylesheet" href="../styles/doc-style.css">
+</head>
+<body>
+    <h1>Binary Trees</h1>
+
+    <ul>
+        <li>A hierarchical data structure.</li>
+        <li>The topmost node is called the <strong>root node</strong>.</li>
+        <li>The subnodes of a node are called <strong>child nodes</strong>.</li>
+        <li>A node with child nodes is called a <strong>parent node</strong>.</li>
+        <li>A parent node can have <strong>at most two children</strong>.</li>
+        <li>Nodes with no children are called <strong>leaf nodes</strong>.</li>
+        <li>An <strong>edge</strong> (or branch) connects two nodes.</li>
+        <li>Left and right child nodes are <strong>siblings</strong>.</li>
+        <li><strong>Ancestors</strong> of a node are all nodes in its upward path (parent, grandparent, etc.).</li>
+        <li><strong>Descendants</strong> of a node are all nodes in its subtree (children, grandchildren, etc.).</li>
+        <li><strong>Level of a node</strong>: The distance (in edges) from the root node. Root is level 0.</li>
+        <li><strong>Subtree</strong>: A tree formed from any node and all its descendants.</li>
+    </ul>
+
+    <h2>Implementation</h2>
+
+    <h3>Build Tree from Preorder</h3>
+    <pre>
+        // Ex: preorder = [1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1]
+
+        class Node {
+        public:
+            int data;
+            Node* left;
+            Node* right;
+
+            Node(int data) {
+                this->data = data;
+                left = right = NULL;
+            }
+        };
+
+        int idx = -1; // track current index in preorder array
+
+        Node* BuildTree(vector<int> nodes) {
+            idx++;
+            if (nodes[idx] == -1) return NULL;
+
+            Node* currNode = new Node(nodes[idx]);
+            currNode->left = BuildTree(nodes);
+            currNode->right = BuildTree(nodes);
+
+            return currNode;
+        }
+    </pre>
+
+    <h2>Tree Traversals</h2>
+    <h4>Tree traversal have linear time and space complexities.</h4>
+    <h3>1. Preorder Traversal (Root, Left, Right)</h3>
+    <pre>
+        void preorderTraversal(Node* root) {
+            if (root == NULL) return;
+
+            cout << root->data << " ";
+            preorderTraversal(root->left);
+            preorderTraversal(root->right);
+        }
+    </pre>
+
+    <h3>2. Inorder Traversal (Left, Root, Right)</h3>
+    <pre>
+        void inorderTraversal(Node* root) {
+            if (root == NULL) return;
+
+            inorderTraversal(root->left);
+            cout << root->data << " ";
+            inorderTraversal(root->right);
+        }
+    </pre>
+
+    <h3>3. Postorder Traversal (Left, Right, Root)</h3>
+    <pre>
+        void postorderTraversal(Node* root) {
+            if (root == NULL) return;
+
+            postorderTraversal(root->left);
+            postorderTraversal(root->right);
+            cout << root->data << " ";
+        }
+    </pre>
+
+    <h3>4. Level Order Traversal (Breadth First)</h3>
+    <pre>
+        void levelOrderTraversal(Node* root) {
+            if (root == NULL) return;
+
+            queue<Node*> q;
+            q.push(root);
+
+            while (!q.empty()) {
+                Node* curr = q.front();
+                q.pop();
+
+                cout << curr->data << " ";
+
+                if (curr->left != NULL) q.push(curr->left);
+                if (curr->right != NULL) q.push(curr->right);
+            }
+        }
+    </pre>
+</body>
+</html>
